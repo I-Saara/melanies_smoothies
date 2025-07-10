@@ -1,5 +1,6 @@
 # Import python packages
 import streamlit as st
+import requests
 from snowflake.snowpark.functions import col
 st.title(":cup_with_straw: Customize your Smoothie! :cup_with_straw:")
 st.write(
@@ -26,6 +27,8 @@ if ingredient_list:
     ingredients_string=''
     for fruit_choosen in ingredient_list:
         ingredients_string+=fruit_choosen+' '
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        sd_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
 
         search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON'],iloc[0]
     #st.write(ingredients_string)
@@ -44,8 +47,7 @@ st.subheader
 
 
 
-import requests
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response.json())
-sd_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
+
+
+
 
