@@ -24,10 +24,14 @@ if ingredient_list:
     #st.text(ingredient_list)
     ingredients_string=''
     for fruit_choosen in ingredient_list:
-        ingredients_string+=fruit_choosen+', '
+        ingredients_string+=fruit_choosen+' '
+
+        search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON'],iloc[0]
     #st.write(ingredients_string)
     title= st.text_input("Name on Smoothie:")
     st.write("The name on your smoothie will be:", title)
+
+st.subheader
   
     my_insert_stmt = """ insert into SMOOTHIES.PUBLIC.ORDERS(ingredients, name_on_order) values (('""" + ingredients_string + """'),('""" + title + """'))"""
     #st.write(my_insert_stmt)
@@ -40,5 +44,7 @@ if ingredient_list:
 
 
 
-
+import requests
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response.json())
 
