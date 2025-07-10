@@ -25,8 +25,7 @@ ingredient_list = st.multiselect(
     my_dataframe,
     max_selections=5
 )
-title= st.text_input("Name on Smoothie:")
-st.write("The name on your smoothie will be:", title)
+
 if ingredient_list:
     #st.text(ingredient_list)
     ingredients_string=''
@@ -37,7 +36,8 @@ if ingredient_list:
         st.subheader(fruit_chosen + 'Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)
         sd_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
-
+title= st.text_input("Name on Smoothie:")
+st.write("The name on your smoothie will be:", title)
         
     #st.write(ingredients_string)
        
