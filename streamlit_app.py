@@ -19,7 +19,8 @@ ingredient_list = st.multiselect(
     my_dataframe,
     max_selections=5
 )
-
+title= st.text_input("Name on Smoothie:")
+st.write("The name on your smoothie will be:", title)
 if ingredient_list:
     #st.text(ingredient_list)
     ingredients_string=''
@@ -28,8 +29,7 @@ if ingredient_list:
 
         search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON'],iloc[0]
     #st.write(ingredients_string)
-    title= st.text_input("Name on Smoothie:")
-    st.write("The name on your smoothie will be:", title)
+       
 
 st.subheader
   
@@ -46,5 +46,6 @@ st.subheader
 
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
+#st.text(smoothiefroot_response.json())
+sd_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
 
