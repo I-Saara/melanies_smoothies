@@ -35,19 +35,18 @@ if ingredient_list:
         st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         st.subheader(fruit_chosen + 'Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)
-        sd_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
+        sd_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)\
+        my_insert_stmt = """ insert into SMOOTHIES.PUBLIC.ORDERS(ingredients, name_on_order) values (('""" + ingredients_string + """'),('""" + title + """'))"""
 title= st.text_input("Name on Smoothie:")
 st.write("The name on your smoothie will be:", title)
-        
-    #st.write(ingredients_string)
-       
+time_to_insert= st.button("Submit Order")
 
 
   
-        my_insert_stmt = """ insert into SMOOTHIES.PUBLIC.ORDERS(ingredients, name_on_order) values (('""" + ingredients_string + """'),('""" + title + """'))"""
+        
     #st.write(my_insert_stmt)
     
-    time_to_insert= st.button("Submit Order")
+    
   
     if time_to_insert:
         session.sql(my_insert_stmt).collect()
