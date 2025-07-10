@@ -26,8 +26,8 @@ if ingredient_list:
     for fruit_choosen in ingredient_list:
         ingredients_string+=fruit_choosen+', '
     #st.write(ingredients_string)
-    title= st.text_input("Name on Smoothie")
-    st.write("The name on your smoothie will be: ", title)
+    title= st.text_input("Name on Smoothie:")
+    st.write("The name on your smoothie will be:" title)
     my_insert_stmt = """ insert into SMOOTHIES.PUBLIC.ORDERS(ingredients, name_on_order) values (('""" + ingredients_string + """'),('""" + title + """'))"""
     #st.write(my_insert_stmt)
     
