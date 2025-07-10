@@ -28,7 +28,7 @@ if ingredient_list:
     #st.write(ingredients_string)
     title= st.text_input("Name on Smoothie")
     st.write("The name on your smoothie will be: ", title)
-    my_insert_stmt = """ insert into SMOOTHIES.PUBLIC.ORDERS(ingredients, name_on_smoothie) values (('""" + ingredients_string + """'),('""" + title + """'))"""
+    my_insert_stmt = """ insert into SMOOTHIES.PUBLIC.ORDERS(ingredients, name_on_order) values (('""" + ingredients_string + """'),('""" + title + """'))"""
     #st.write(my_insert_stmt)
     
     time_to_insert= st.button("Submit Order")
